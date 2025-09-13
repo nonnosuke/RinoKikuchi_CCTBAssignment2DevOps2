@@ -3,7 +3,7 @@ const {Builder, By, until} = require('selenium-webdriver');
 (async function testValidation() {
   let driver = await new Builder().forBrowser('chrome').build();
   try {
-    await driver.get('http://<TESTING-WEB-SERVER-IP>/');
+    await driver.get('http://54.83.89.110/');
     await driver.findElement(By.name('name')).sendKeys('Alice');
     // Leave email empty
     await driver.findElement(By.name('role')).sendKeys('Developer');
