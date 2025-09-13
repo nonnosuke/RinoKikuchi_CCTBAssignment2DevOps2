@@ -50,8 +50,8 @@ pipeline {
             steps {
                 echo 'Deploying to Production Server...'
                 sh """
-                ssh ec2-user@$PRODUCTION_SERVER "sudo rm -rf /var/www/html/*"
-                ssh ec2-user@$PRODUCTION_SERVER "git clone $REPO_URL /var/www/html"
+                ssh -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "sudo rm -rf /var/www/html/*"
+                ssh -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "git clone $REPO_URL /var/www/html"
                 """
             }
         }
