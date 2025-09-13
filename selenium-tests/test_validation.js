@@ -1,7 +1,15 @@
 const {Builder, By, until} = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 (async function testValidation() {
-  let driver = await new Builder().forBrowser('chrome').build();
+// Configure Chrome options for EC2
+    let options = new chrome.Options()
+        .headless() // run without GUI
+        .addArguments('--no-sandbox')
+        .addArguments('--disable-dev-shm-usage')
+        .addArguments('--user-data-dir=/tmp/chrome-user-data-' + Date.now()); // unique temp dir
+  
+  let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get('http://54.83.89.110/');
     await driver.findElement(By.name('name')).sendKeys('Alice');
