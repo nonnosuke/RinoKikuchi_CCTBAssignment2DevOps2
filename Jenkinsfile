@@ -50,8 +50,8 @@ pipeline {
             steps {
                 echo 'Deploying to Production Server...'
                 sh """
-                ssh -i /var/lib/jenkins/.ssh/jenkins_controller.pem -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "sudo rm -rf /var/www/html/*"
-                ssh -i /var/lib/jenkins/.ssh/jenkins_controller.pem -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "git clone $REPO_URL /var/www/html"
+                ssh -i /var/lib/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER 'sudo rm -rf /var/www/html/*'
+                ssh -i /var/lib/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "git clone $REPO_URL /var/www/html"
                 """
             }
         }
