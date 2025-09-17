@@ -3,8 +3,8 @@ pipeline {
     environment {
         TEST_RESULT_FILE = 'test_result.txt'
         REPO_URL = 'https://github.com/nonnosuke/RinoKikuchi_CCTBAssignment2DevOps2.git'
-        TESTING_SERVER = '34.207.78.26 '
-        PRODUCTION_SERVER = '34.207.78.26 '
+        TESTING_SERVER = '34.228.13.17'
+        PRODUCTION_SERVER = '34.228.13.17'
     }
 
     stages {
