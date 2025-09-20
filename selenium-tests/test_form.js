@@ -11,7 +11,7 @@ const chrome = require('selenium-webdriver/chrome');
   
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
-    await driver.get('54.221.14.161/');
+    await driver.get('http://54.221.14.161/');
     await driver.findElement(By.name('name')).sendKeys('Alice');
     await driver.findElement(By.name('email')).sendKeys('alice@example.com');
     await driver.findElement(By.name('role')).sendKeys('Developer');
