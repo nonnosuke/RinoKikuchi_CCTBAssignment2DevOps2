@@ -4,7 +4,7 @@ pipeline {
         TEST_RESULT_FILE = 'test_result.txt'
         REPO_URL = 'https://github.com/nonnosuke/RinoKikuchi_CCTBAssignment2DevOps2.git'
         TESTING_SERVER = '54.91.54.180'
-        PRODUCTION_SERVER = '54.91.54.180'
+        PRODUCTION_SERVER = '13.221.124.188'
 		SSH_TOKEN = credentials('jenkins')
     }
 
