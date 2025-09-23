@@ -57,7 +57,7 @@ pipeline {
              sudo rm -rf /var/www/html && \\
              sudo mkdir -p /var/www/html && \\
              sudo chown ec2-user:ec2-user /var/www/html && \\
-             git clone \$REPO_URL /var/www/html'
+             git clone $REPO_URL /var/www/html'
     """
 }
         }
