@@ -3,8 +3,8 @@ pipeline {
     environment {
         TEST_RESULT_FILE = 'test_result.txt'
         REPO_URL = 'https://github.com/nonnosuke/RinoKikuchi_CCTBAssignment2DevOps2.git'
-        TESTING_SERVER = '54.221.14.161'
-        PRODUCTION_SERVER = '54.221.14.161'
+        TESTING_SERVER = '3.91.32.167'
+        PRODUCTION_SERVER = '3.91.32.167'
     }
 
     stages {
@@ -50,8 +50,8 @@ pipeline {
             steps {
                 echo 'Deploying to Production Server...'
                 sh """
-                ssh -i /var/lib/jenkins/.ssh/ -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER 'sudo rm -rf /var/www/html/*'
-                ssh -i /var/lib/jenkins/.ssh/ -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER `git clone $REPO_URL /var/www/html`
+                ssh -i /home/ec2-user/jenkins.pem -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER 'sudo rm -rf /var/www/html/*'
+                ssh -i /home/ec2-user/jenkins.pem -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER `git clone $REPO_URL /var/www/html`
                 """
             }
         }
