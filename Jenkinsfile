@@ -5,6 +5,7 @@ pipeline {
         REPO_URL = 'https://github.com/nonnosuke/RinoKikuchi_CCTBAssignment2DevOps2.git'
         TESTING_SERVER = '3.91.32.167'
         PRODUCTION_SERVER = '3.91.32.167'
+		SSH_TOKEN = credentials('jenkins')
     }
 
     stages {
@@ -50,8 +51,8 @@ pipeline {
             steps {
                 echo 'Deploying to Production Server...'
                 sh """
-                ssh -i /home/ec2-user/jenkins.pem -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER 'sudo rm -rf /var/www/html/*'
-                ssh -i /home/ec2-user/jenkins.pem -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER `git clone $REPO_URL /var/www/html`
+                ssh -i $SSH_TOKEN -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER 'sudo rm -rf /var/www/html/*'
+                ssh -i $SSH_TOKEN -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER `git clone $REPO_URL /var/www/html`
                 """
             }
         }
