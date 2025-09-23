@@ -49,12 +49,17 @@ pipeline {
                 }
             }
             steps {
-                echo 'Deploying to Production Server...'
-                sh """
-                
-                ssh -i $SSH_TOKEN -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER `git clone $REPO_URL /var/www/html`
-                """
-            }
+    echo 'Deploying to Production Server...'
+    sh """
+        ssh -i \$SSH_TOKEN -o StrictHostKeyChecking=no ec2-user@\${PRODUCTION_SERVER} \\
+            'sudo yum update -y && \\
+             sudo yum install -y git && \\
+             sudo rm -rf /var/www/html && \\
+             sudo mkdir -p /var/www/html && \\
+             sudo chown ec2-user:ec2-user /var/www/html && \\
+             git clone \$REPO_URL /var/www/html'
+    """
+}
         }
     }
 }
