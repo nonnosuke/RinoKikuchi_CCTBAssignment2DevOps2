@@ -3,8 +3,8 @@ pipeline {
     environment {
         TEST_RESULT_FILE = 'test_result.txt'
         REPO_URL = 'https://github.com/nonnosuke/RinoKikuchi_CCTBAssignment2DevOps2.git'
-        TESTING_SERVER = '3.91.32.167'
-        PRODUCTION_SERVER = '3.91.32.167'
+        TESTING_SERVER = '54.91.54.180'
+        PRODUCTION_SERVER = '54.91.54.180'
 		SSH_TOKEN = credentials('jenkins')
     }
 
